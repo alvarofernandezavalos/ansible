@@ -1,0 +1,16 @@
+
+- hosts: localhost
+
+  tasks:
+
+  - name: download an artifact from a private repository requiring authentication
+    community.general.maven_artifact:
+      group_id: local.backend
+      artifact_id: server
+      classifier: jar-with-dependencies
+      repository_url: 'http://artifactory-address:port/'
+      username: username 
+      password: password
+      extension: jar
+      dest: .
+      keep_name: yes

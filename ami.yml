@@ -1,0 +1,13 @@
+
+- hosts: localhost
+
+  tasks:
+
+  - name: create ami image
+    amazon.aws.ec2_ami:
+      instance_id: instance_id_4_create_ami
+      wait: no
+      name: debian-playground-ansible
+      tags:
+        Name: debian-playground-ansible
+        Service: ansible
