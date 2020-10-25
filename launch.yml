@@ -63,6 +63,9 @@
         - git
         - gnupg
         - gnupg2
+
+  roles: 
+    - installDocker
           
   tasks:
     - name: git checkout
