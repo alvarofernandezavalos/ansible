@@ -9,7 +9,7 @@
       artifact_id: server
       classifier: jar-with-dependencies
       repository_url: 'http://artifactory-address:port/'
-      username: username 
+      username: username
       password: password
       extension: jar
       dest: .
