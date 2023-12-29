@@ -1,0 +1,30 @@
+---
+# tasks file for installDocker
+
+- name: add apt signing key from official docker repo
+  apt_key:
+    url: 'https://download.docker.com/linux/debian/gpg'
+    state: present
+
+
+- name: add docker official repository for Debian Bookworm
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/debian bookworm stable'
+    state: present
+
+- name: installing
+  apt:
+    force_apt_get: true
+    install_recommends: true
+    update_cache: true
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: latest
+
+# - get_url: {dest: /usr/local/bin/docker-compose, mode: '0755', url: 'https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Linux-x86_64'}
+#   name: installing docker-compose
