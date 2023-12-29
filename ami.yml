@@ -1,13 +1,18 @@
-
-- hosts: localhost
+- hosts: mycomputer
 
   tasks:
 
   - name: create ami image
     amazon.aws.ec2_ami:
-      instance_id: instance_id_4_create_ami
-      wait: no
-      name: debian-playground-ansible
+      instance_id: "{{ ec2_id }}"
+      wait: yes
+      name: '{{ ami_name }}'
+      region: '{{ aws_region }}'
       tags:
-        Name: debian-playground-ansible
+        Name: '{{ ami_name }}'
         Service: ansible
+    register: output
+
+  - name: print output
+    debug:
+      var: output
